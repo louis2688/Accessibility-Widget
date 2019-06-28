@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mickidum/acc_toolbar.git"
+    "url": "git+https://github.com/louis2688/Accessibility-Widget.git"
   },
   "keywords": [
     "Accessibility",
@@ -38,5 +38,7 @@
     "url": "https://github.com/mickidum/acc_toolbar/issues"
   },
   "homepage": "https://github.com/mickidum/acc_toolbar#readme",
-  "dependencies": {}
+  "dependencies": {
+    "node-sass": "^4.12.0"
+  }
 }

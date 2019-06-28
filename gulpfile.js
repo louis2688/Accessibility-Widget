@@ -1,6 +1,6 @@
 var gulp           = require('gulp'),
 		gutil          = require('gulp-util' ),
-		gulpSass           = require('gulp-sass'),
+		gulpSass       = require('gulp-sass'),
 		browserSync    = require('browser-sync'),
 		concat         = require('gulp-concat'),
 		uglify         = require('gulp-uglify'),
@@ -9,8 +9,8 @@ var gulp           = require('gulp'),
 		cache          = require('gulp-cache'),
 		autoprefixer   = require('gulp-autoprefixer'),
 		notify         = require("gulp-notify"),
-		fileinclude 	 = require('gulp-file-include'),
-		htmlmin 	 		 = require('gulp-htmlmin'),
+		fileinclude    = require('gulp-file-include'),
+		htmlmin 	   = require('gulp-htmlmin'),
 		rimraf         = require("rimraf");
 
 function minifyHtml(cb) {
@@ -67,9 +67,9 @@ function sass(cb) {
 function files(cb) {
 	setTimeout(() => {
 		gulp.src([
-		'app/minjs/common.min.js'
+		'app/minjs/common.min.js' //from common.min.js
 		])
-		.pipe(rename('acctoolbar.min.js'))
+		.pipe(rename('acctoolbar.min.js')) //from acctoolbar.min.js
 		.pipe(gulp.dest('acctoolbar'));
 		gulp.src([
 			'app/cursors/**/*',
