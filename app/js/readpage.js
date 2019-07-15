@@ -7,10 +7,11 @@ var rvAgentPlayer = { version : 1 };
 if (typeof responsiveVoice === 'undefined') {
 
 /*
- Screen Reader from Common Access
- 
- Check our site : https://commonaccess.com/
- 
+ ResponsiveVoice JS v1.5.16
+
+ (c) 2015-2019 LearnBrite
+
+ License: http://responsivevoice.org/license
 */
 if("undefined"!=typeof responsiveVoice)console.log("ResponsiveVoice already loaded"),console.log(responsiveVoice);else var ResponsiveVoice=function(){function p(a){a=a.replace(/([\n\r])+/gm,"\n");for(var b=/([,.:!\u00a1?\u00bf;()\[\]\u2014\u00ab\u00bb])+[\n\r]/gm,d=!0;d;)null===a.match(b)?d=!1:a=a.replace(b,"$1 ");return a}function q(a,c){if(!n)return a;console.log(c);var b=a;try{for(var h=0;h<n.length;h++){var g=n[h],f=!1,e=g.collectionvoices;e?(Array.isArray(e)||(e=[e]),c.collectionvoice&&c.collectionvoice.name&&
 -1!=e.indexOf(c.collectionvoice.name)&&(f=!0)):f=!0;var k=!1,l=g.systemvoices;l?(Array.isArray(l)||(l=[l]),c.systemvoice&&c.systemvoice.name&&-1!=l.indexOf(c.systemvoice.name)&&(k=!0)):k=!0;(null==e||null!=e&&f)&&(null==l||null!=l&&k)&&(b=b.replace(g.searchvalue,g.newvalue))}return b}catch(m){return console.warn("ResponsiveVoice: There was an error while processing the textReplacements array"),a}}var a=this;a.version="1.5.16";console.log("ResponsiveVoice r"+a.version);a.responsivevoices=[{name:"UK English Female",

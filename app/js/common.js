@@ -141,31 +141,30 @@ MicAccessTool.prototype.checkLanguageBox = function() {
         for (var A = document.querySelectorAll("#mic-toolbox-cursor-big-black,#mic-toolbox-cursor-big-white,#mic-toolbox-big-cursor"), t = 0; t < A.length; t++) A[t].classList.remove("vi-enabled"), document.body.classList.remove(A[t].id), delete window.MICTOOLBOXAPPSTATE.bodyClassList[A[t].id];
         this.classList.add("vi-enabled"), document.body.classList.add(this.id), window.MICTOOLBOXAPPSTATE.bodyClassList[this.id] = this.id
     }
-    MicAccessTool.prototype.updateState()
+    
 }, MicAccessTool.prototype.onceButtonChange = function(o) {
     o.preventDefault(), "mic-toolbox-disable-buttons-keyboard" === this.id && (window.MICTOOLBOXAPPSTATE.keyboardRoot = !window.MICTOOLBOXAPPSTATE.keyboardRoot, MicAccessTool.prototype.keyboardRootEnable()), "mic-toolbox-content-images" === this.id && MicAccessTool.prototype.imagesChange(), document.body.classList.contains(this.id) ? (this.classList.remove("vi-enabled"), document.body.classList.remove(this.id), delete window.MICTOOLBOXAPPSTATE.bodyClassList[this.id]) : (this.classList.add("vi-enabled"), document.body.classList.add(this.id), window.MICTOOLBOXAPPSTATE.bodyClassList[this.id] = this.id), MicAccessTool.prototype.updateState()
     
 }, MicAccessTool.prototype.onceButtonChangeReadPage = function(o) {
-  
+   
     function getSelectionText() {
-    var text = "";
-    if (window.getSelection) {
-        text = window.getSelection().toString();
-    // for Internet Explorer 8 and below. For Blogger, you should use &amp;&amp; instead of &&.
-    } else if (document.selection && document.selection.type != "Control") { 
-        text = document.selection.createRange().text;
+        var text = "";
+        if (window.getSelection) {
+            text = window.getSelection().toString();
+        // for Internet Explorer 8 and below. For Blogger, you should use &amp;&amp; instead of &&.
+        } else if (document.selection && document.selection.type != "Control") { 
+            text = document.selection.createRange().text;
+        }
+        return text;
     }
-    return text;
-}
-$(document).ready(function (){ // when the document has completed loading
-   $(document).mouseup(function (e){ // attach the mouseup event for all div and pre tags
-      setTimeout(function() { // When clicking on a highlighted area, the value stays highlighted until after the mouseup event, and would therefore stil be captured by getSelection. This micro-timeout solves the issue. 
-         responsiveVoice.cancel(); // stop anything currently being spoken
-         responsiveVoice.speak(getSelectionText()); //speak the text as returned by getSelectionText
-      }, 1);
-   });
-});
-MicAccessTool.prototype.updateState()
+    $(document).ready(function (){ // when the document has completed loading
+       $(document).mouseup(function (e){ // attach the mouseup event for all div and pre tags
+          setTimeout(function() { // When clicking on a highlighted area, the value stays highlighted until after the mouseup event, and would therefore stil be captured by getSelection. This micro-timeout solves the issue. 
+             responsiveVoice.cancel(); // stop anything currently being spoken
+             responsiveVoice.speak(getSelectionText()); //speak the text as returned by getSelectionText
+          }, 1);
+       });
+    });
     
 }, MicAccessTool.prototype.keyboardRootEnable = function() {
     if (window.MICTOOLBOXAPPSTATE.keyboardRoot)
@@ -270,10 +269,7 @@ MicAccessTool.prototype.updateState()
 };
 
 
-
-
-
-/* ====================== Read Page features =========================== */
+/*  ============== Read Page ================= */
 
 if (typeof rvAgentPlayer !== 'undefined') {
     throw new Error('ResponsiveVoice Website Agent is already running');
@@ -284,10 +280,11 @@ var rvAgentPlayer = { version : 1 };
 if (typeof responsiveVoice === 'undefined') {
 
 /*
- Screen Reader from Common Access
- 
- Check our site : https://commonaccess.com/
- 
+ ResponsiveVoice JS v1.5.16
+
+ (c) 2015-2019 LearnBrite
+
+ License: http://responsivevoice.org/license
 */
 if("undefined"!=typeof responsiveVoice)console.log("ResponsiveVoice already loaded"),console.log(responsiveVoice);else var ResponsiveVoice=function(){function p(a){a=a.replace(/([\n\r])+/gm,"\n");for(var b=/([,.:!\u00a1?\u00bf;()\[\]\u2014\u00ab\u00bb])+[\n\r]/gm,d=!0;d;)null===a.match(b)?d=!1:a=a.replace(b,"$1 ");return a}function q(a,c){if(!n)return a;console.log(c);var b=a;try{for(var h=0;h<n.length;h++){var g=n[h],f=!1,e=g.collectionvoices;e?(Array.isArray(e)||(e=[e]),c.collectionvoice&&c.collectionvoice.name&&
 -1!=e.indexOf(c.collectionvoice.name)&&(f=!0)):f=!0;var k=!1,l=g.systemvoices;l?(Array.isArray(l)||(l=[l]),c.systemvoice&&c.systemvoice.name&&-1!=l.indexOf(c.systemvoice.name)&&(k=!0)):k=!0;(null==e||null!=e&&f)&&(null==l||null!=l&&k)&&(b=b.replace(g.searchvalue,g.newvalue))}return b}catch(m){return console.warn("ResponsiveVoice: There was an error while processing the textReplacements array"),a}}var a=this;a.version="1.5.16";console.log("ResponsiveVoice r"+a.version);a.responsivevoices=[{name:"UK English Female",
